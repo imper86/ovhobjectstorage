@@ -1,0 +1,16 @@
+{
+    "name": "imper86/ovhobjectstorage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrian Szuszkiewicz",
+            "email": "me@imper.info"
+        }
+    ],
+    "require": {
+        "php-opencloud/openstack": "^2.0"
+    },
+    "autoload": {
+        "psr-4": { "Imper86\\OVHObjectStorage\\": "src/Imper86/OVHObjectStorage" }
+    }
+}
