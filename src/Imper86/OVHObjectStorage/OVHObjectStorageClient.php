@@ -77,14 +77,19 @@ class OVHObjectStorageClient
         return $this->getContainer()->getObject($cloudPath);
     }
 
-    public function uploadFromPath(string $filePath, string $cloudPath): Object
+    public function uploadFromPath(string $filePath, string $cloudPath, bool $isLarge = false): Object
     {
         $stream = new Stream(fopen($filePath, 'r'));
-
-        $object = $this->getContainer()->createObject([
+        $options = [
             'name' => $cloudPath,
             'stream' => $stream,
-        ]);
+        ];
+
+        if (!$isLarge) {
+            $object = $this->getContainer()->createObject($options);
+        } else {
+            $object = $this->getContainer()->createLargeObject($options);
+        }
 
         return $object;
     }
